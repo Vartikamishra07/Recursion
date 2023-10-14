@@ -1,0 +1,35 @@
+class Solution
+{
+public:
+    void sums(int index, vector<int>&arr ,vector<int>&nums ,int sum ,vector<int>&ans)
+    {
+        //base condition
+        if(index>=arr.size())
+        {
+            for(int i=0;i<nums.size();i++)
+            {
+                sum=sum+nums[i];
+            }
+            ans.push_back(sum);
+            sum=0;
+            return;
+        }
+        
+        //pick the element
+        nums.push_back(arr[index]);
+        sums(index+1,arr,nums,sum,ans);
+        
+        //do not pick the element
+        nums.pop_back();
+        sums(index+1,arr,nums,sum,ans);
+    }
+    
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        vector<int> ans;
+        vector<int> nums;
+        int sum=0;
+        sums(0,arr, nums,sum,ans);
+        return ans;
+    }
+};
