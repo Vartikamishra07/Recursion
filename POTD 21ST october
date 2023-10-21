@@ -1,0 +1,45 @@
+Input:
+N = 4
+Output:
+15
+Explanation:
+F(1) = 1
+F(2) = 1 + 2 = 3
+F(3) = 1 + 3 = 4
+F(4) = 1 + 2 + 4 = 7
+ans = F(1) + F(2) + F(3) + F(4)
+    = 1 + 3 + 4 + 7
+    = 15
+
+//code
+class Solution
+{
+public:
+    int add(int N)  // function to add all divisors of a given number N
+    {
+        int sum=0;
+        for(int i=1;i<=sqrt(N);i++)
+        {
+            if(N%i==0)
+            {
+                sum=sum+i;
+                if(N/i!=i)
+                {
+                    sum=sum+N/i;
+                }
+            }
+        }
+        return sum;
+    }
+    
+    long long sumOfDivisors(int N)
+    {
+        int ans=0;
+        while(N!=0)
+        {
+            ans=ans+add(N);
+            N=N-1;
+        }
+        return ans;
+    }
+};
