@@ -1,0 +1,71 @@
+class Solution 
+{
+public:
+    bool isqueen(int row,int column,vector<string> &board , int n)
+    {
+        int duprow=row;
+        int dupcol=column;
+        while(row>=0 && column>=0)
+        {
+          if(board[row][column]=='Q')
+          {
+            return false;
+          }
+          row--;
+          column--;
+        }
+        row=duprow;
+        column=dupcol;
+        while(column>=0)
+        {
+           if(board[row][column]=='Q')
+          {
+            return false;
+          }
+          column--;
+        }
+        row=duprow;
+        column=dupcol;
+        while(row<n && column>=0)
+        {
+            if(board[row][column]=='Q')
+          {
+            return false;
+          }
+          row++;
+          column--;
+        }
+        return true;
+    }
+
+    void solve(int column , vector<string> &board , vector<vector<string>> &ans , int n)
+    {
+      if(column==n)
+      {
+        ans.push_back(board);
+        return;
+      }
+      for(int row=0;row<n;row++)
+      {
+        if(isqueen(row,column,board,n))
+        {
+          board[row][column]='Q';
+          solve(column+1,board,ans,n);
+          board[row][column]='.';
+        }
+      }
+    }
+
+    vector<vector<string>> solveNQueens(int n) 
+    {
+        vector<vector<string>> ans;
+        vector<string> board(n);
+        string s(n,'.');
+        for(int i=0;i<n;i++)
+        {
+          board[i]=s;
+        }
+        solve(0,board,ans,n);
+        return ans;
+    }
+};
