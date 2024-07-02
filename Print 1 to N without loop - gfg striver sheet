@@ -1,0 +1,22 @@
+class Solution{
+    public:
+    //Complete this function
+    
+    void helper(int count , int N)
+    {
+        if(count>N)
+        {
+            return;
+        }
+        cout<<count<<" ";
+        count++;
+        helper(count , N);
+    }
+
+    void printNos(int N)
+    {
+        int count = 1;
+        helper(count , N);
+    }
+
+};
