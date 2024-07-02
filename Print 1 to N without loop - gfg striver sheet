@@ -1,3 +1,5 @@
+1. Print 1 to N
+
 class Solution{
     public:
     //Complete this function
@@ -20,3 +22,48 @@ class Solution{
     }
 
 };
+
+
+
+2.Print N to 1
+
+class Solution 
+{
+  public:
+    void helper(int count , int N)
+    {
+        if(count==0) return ;
+        cout<<count<<" ";
+        count--;
+        helper(count , N);
+    }
+    void printNos(int N) 
+    {
+       int count = N;
+       helper(count , N);
+    }
+};
+
+
+3. Printing GFG N times
+
+class Solution 
+{
+  public:
+  
+    void helper(int count , int N)
+    {
+        if(count>N) return;
+        count++;
+        cout<<"GFG"<<" ";
+        helper(count , N);
+    }
+    
+    void printGfg(int N)
+    {
+        int count=1;
+        helper(count , N);
+    }
+};
+
+
