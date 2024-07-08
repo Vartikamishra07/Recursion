@@ -1,3 +1,4 @@
+1. Normal approach
 class Solution{
 public:
     //Function to insert an element at the bottom of stack.
@@ -37,3 +38,25 @@ public:
         fun(St);
     }
 };
+
+
+2. Using queue
+
+class Solution{
+public:
+    
+    queue<int>q;
+    //Function to reverse the given stack.
+    void Reverse(stack<int> &St){
+        
+        if(!St.empty())
+        {
+            q.push(St.top());
+            St.pop();
+            Reverse(St);
+            St.push(q.front());
+            q.pop();
+        }
+    }
+};
+
