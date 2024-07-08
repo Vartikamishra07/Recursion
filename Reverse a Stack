@@ -1,0 +1,39 @@
+class Solution{
+public:
+    //Function to insert an element at the bottom of stack.
+    void insert_at_bottom(stack<int> &St,int x){
+        //if stack is empty, push the element to stack.
+        if(St.size()==0){
+            St.push(x);
+        }
+        else{
+            //else if stack is not empty, remove the top element
+            //and recursively call the function to insert the element at bottom.
+            int y=St.top();
+            St.pop();
+            insert_at_bottom(St,x);
+            //push the removed element back to the stack.
+            St.push(y);
+        }
+    }
+    
+    //Function to reverse the stack using recursion.
+    void fun(stack<int> &St){
+        //if stack is not empty,
+        if(St.size()>0){
+            //remove the top element,
+            int x=St.top();
+            St.pop();
+            //recursively call the function to reverse the remaining stack.
+            fun(St);
+            //insert the removed element at the bottom of the reversed stack.
+            insert_at_bottom(St,x);
+        }
+    }
+    
+    //Function to reverse the given stack.
+    void Reverse(stack<int> &St){
+        //calling the recursive function to reverse the stack.
+        fun(St);
+    }
+};
